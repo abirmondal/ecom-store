@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Card({ product }) {
   const rateCeil = Math.round(product.rating.rate);
-  const commaRateCount = product.price.toLocaleString("en-IN");
+  const commaRateCount = product.price.toLocaleString("en-US");
   return (
     <div className="col d-flex justify-content-center">
       <div className="card" style={{ width: "18rem" }}>
@@ -21,7 +21,7 @@ export default function Card({ product }) {
             &nbsp;&nbsp;
             {product.rating.count}
           </div>
-          <p className="card-text">₹ {commaRateCount}</p>
+          <p className="card-text">$ {commaRateCount}</p>
           <button className="btn btn-warning btn-sm" type="button">Add to Cart</button>
         </div>
       </div>
