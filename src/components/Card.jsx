@@ -14,7 +14,7 @@ export default function Card({ product }) {
           </div>
         </Link>
         <div className="card-body">
-          <Link className="card-link link-dark link-offset-1" to={`/products/${product.id}`}>
+          <Link className="card-link link-offset-1" to={`/products/${product.id}`}>
             <h1 className="card-title fs-5 text-truncate" title={product.title}>
               {product.title}
             </h1>
