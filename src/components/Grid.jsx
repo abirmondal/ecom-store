@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Grid({ category }) {
-  var URL = null;
-  if (category == null) {
-    URL = "https://fakestoreapi.com/products/";
-  } else {
+  var URL = "https://fakestoreapi.com/products/";
+  if (category != null) {
     URL = "https://fakestoreapi.com/products/category/" + category + "/";
   }
+  
   const [products, setProduct] = useState(null);
 
   const fetchProduct = async (URL) => {
