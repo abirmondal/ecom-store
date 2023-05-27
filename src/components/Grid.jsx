@@ -21,6 +21,7 @@ export default function Grid({ category }) {
   };
 
   useEffect(() => {
+    setProduct(null);
     fetchProduct(URL);
   }, [URL]);
 

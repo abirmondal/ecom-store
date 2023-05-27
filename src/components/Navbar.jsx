@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -15,36 +15,29 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/electronics" title="Electronics">
+              <NavLink className="nav-link" to="/electronics" title="Electronics">
                 Electronics
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/jewelery" title="Jewelery">
+              <NavLink className="nav-link" to="/jewelery" title="Jewelery">
                 Jewelery
-              </Link>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Clothing
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/clothing/men">
-                    Men
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/clothing/women">
-                    Women
-                  </Link>
-                </li>
-              </ul>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about" title="Jewelery">
+              <NavLink className="nav-link" to="/clothing/men">
+                Men's Clothing
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/clothing/women">
+                Women's Clothing
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/about" title="Jewelery">
                 About
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
