@@ -49,15 +49,17 @@ export default function Navbar() {
             </li>
           </ul>
           <ul className="navbar-nav ms-auto">
-            {token ? (
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
-            ) : (
-              <Link className="btn" to="/login">
-                Login
-              </Link>
-            )}
+            <li className="nav-item">
+              {token ? (
+                <button className="btn" onClick={logout}>
+                  Logout
+                </button>
+              ) : (
+                <Link className="btn" to="/login">
+                  Login
+                </Link>
+              )}
+            </li>
           </ul>
         </div>
       </div>
