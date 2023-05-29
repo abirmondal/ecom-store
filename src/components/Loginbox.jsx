@@ -89,12 +89,12 @@ export default function Loginbox() {
             {showAlert && <Alertmessage type={alertType} message={alertMessage} closeButton="false" />}
             <div className="form-floating mb-3">
               <input type="text" className="form-control" id="username" name="username" placeholder="Username" onChange={takeInput} value={username} />
-              <label htmlFor="exampleInputEmail1">Username</label>
+              <label htmlFor="username">Username</label>
               <div className="invalid-feedback">Username field is required.</div>
             </div>
             <div className="form-floating mb-3">
               <input type="password" className="form-control" id="password" name="password" placeholder="Password" onChange={takeInput} value={password} />
-              <label htmlFor="exampleInputPassword1">Password</label>
+              <label htmlFor="password">Password</label>
               <div className="invalid-feedback">Password field is required.</div>
             </div>
             <button type="submit" className="btn btn-success w-100" id="loginBtn">
