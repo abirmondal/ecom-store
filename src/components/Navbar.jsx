@@ -1,14 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../AuthContext";
 
 export default function Navbar() {
   const { token, logout } = useContext(AuthContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token") !== null);
-  function logoutUser() {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-  }
   return (
     <nav className="navbar navbar-expand-md bg-body-tertiary fixed-top">
       <div className="container-fluid">

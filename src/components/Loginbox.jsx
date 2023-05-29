@@ -5,7 +5,7 @@ import AuthContext from "../AuthContext";
 
 export default function Loginbox() {
   const navigate = useNavigate();
-  const { login, isAuthenticated } = useContext(AuthContext);
+  const { login, token } = useContext(AuthContext);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [username, setUsername] = useState("johnd");
@@ -31,7 +31,7 @@ export default function Loginbox() {
   }
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (token !== null) {
       navigate("/");
     }
     const form = document.querySelector("form");
@@ -79,7 +79,7 @@ export default function Loginbox() {
         });
       document.querySelector("#loginBtn").textContent = "Login";
     });
-  }, [isAuthenticated, login, navigate]);
+  }, [token, login, navigate]);
   return (
     <div className="row align-items-center" style={{ minHeight: "85vh" }}>
       <div className="col-lg-5 col-md-8 mx-auto">
