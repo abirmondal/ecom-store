@@ -20,18 +20,30 @@ img {
     user-select: none;
 }
 
-.nav {
-    position: relative;
-}
-
-.theme-toggler {
-    position: absolute;
-    top: 50%;
+.theme-toggler, .shopping-cart {
+    position: fixed;
+    top: 30px;
     right: 10px;
     transform: translateY(-50%);
 }
+.theme-toggler {
+    margin-right: 3.8rem;
+}
+.shopping-cart {
+    margin-right: 6rem;
+}
 @media (max-width: 768px) {
-    .theme-toggler {
+    .theme-toggler, .shopping-cart {
         right: 70px;
     }
+    .theme-toggler {
+        margin-right: 0;
+    }
+    .shopping-cart {
+        margin-right: 2.5rem;
+    }
+}
+
+svg path {
+    fill: currentColor;
 }

@@ -25,3 +25,5 @@ window.onload = function () {
     setTheme(document.documentElement.getAttribute("data-bs-theme") === "dark" ? "light" : "dark");
   });
 };
+
+

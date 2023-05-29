@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../AuthContext";
 
 export default function Navbar() {
-  // const setTheme = () => {
-  //   const htmlElement = document.querySelector("html");
-  //   const theme = htmlElement.getAttribute("data-bs-theme");
-  //   htmlElement.setAttribute("data-bs-theme", theme === "dark" ? "light" : "dark");
-  //   document.querySelector("#theme-icon").classList.toggle("fa-moon");
-  // };
-  
-
+  const { token, logout } = useContext(AuthContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token") !== null);
+  function logoutUser() {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  }
   return (
-    <nav className="navbar navbar-expand-md bg-body-tertiary">
+    <nav className="navbar navbar-expand-md bg-body-tertiary fixed-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img src="android-chrome-192x192.png" alt="Ecom Store Logo" style={{ width: "35px" }} />
@@ -19,6 +18,9 @@ export default function Navbar() {
         </Link>
         <button className="btn theme-toggler" type="button" title="Theme Change">
           <i className="fa-solid fa-sun fa-lg" id="theme-icon"></i>
+        </button>
+        <button className="btn shopping-cart" type="button" title="Theme Change">
+          <i className="fa-solid fa-cart-shopping fa-lg" id="cart"></i>
         </button>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -37,12 +39,12 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/clothing/men">
-                Men's Clothing
+                Men's
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/clothing/women">
-                Women's Clothing
+                Women's
               </NavLink>
             </li>
             <li className="nav-item">
@@ -50,6 +52,17 @@ export default function Navbar() {
                 About
               </NavLink>
             </li>
+          </ul>
+          <ul className="navbar-nav ms-auto">
+            {token ? (
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            ) : (
+              <Link className="btn" to="/login">
+                Login
+              </Link>
+            )}
           </ul>
         </div>
       </div>
