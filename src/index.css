@@ -47,3 +47,11 @@ img {
 svg path {
     fill: currentColor;
 }
+
+#cartOffcanvas {
+  width: 250px;
+}
+
+.price-text::before {
+    content: '$';
+}

@@ -47,7 +47,7 @@ export default function ProductDetails() {
           {product.rating.count}
         </div>
         <h3>${product.price}</h3>
-        <button className="btn btn-warning mt-3" type="button">
+        <button className="btn btn-primary mt-3" type="button">
           Add to Cart
         </button>
       </div>

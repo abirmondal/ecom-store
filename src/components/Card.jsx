@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import CartContext from "../contexts/CartContext";
 
 export default function Card({ product }) {
+  const { addToCartContext } = useContext(CartContext);
   const rateCeil = Math.round(product.rating.rate);
-  const commaRateCount = product.price.toLocaleString("en-US");
+  const commaPrice = product.price.toLocaleString("en-US");
+  const prodDetailsForCart = product;
+  prodDetailsForCart.quantity = 1;
+
+  function handleAddToCart() {
+    addToCartContext(prodDetailsForCart);
+  }
 
   return (
     <div className="col d-flex justify-content-center">
@@ -23,8 +31,8 @@ export default function Card({ product }) {
             &nbsp;&nbsp;
             {product.rating.count}
           </div>
-          <p className="card-text">$ {commaRateCount}</p>
-          <button className="btn btn-warning btn-sm" type="button">
+          <p className="card-text price-text">{commaPrice}</p>
+          <button className="btn btn-primary btn-sm" type="button" onClick={handleAddToCart}>
             Add to Cart
           </button>
         </div>

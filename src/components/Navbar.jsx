@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import AuthContext from "../AuthContext";
+import AuthContext from "../contexts/AuthContext";
+import CartContext from "../contexts/CartContext";
+import "../actions/themeToggle.js"
+
 
 export default function Navbar() {
   const { token, logout } = useContext(AuthContext);
+  const { cartCount } = useContext(CartContext);
+
   return (
     <nav className="navbar navbar-expand-md bg-body-tertiary fixed-top">
       <div className="container-fluid">
@@ -14,8 +19,14 @@ export default function Navbar() {
         <button className="btn theme-toggler" type="button" title="Theme Change">
           <i className="fa-solid fa-sun fa-lg" id="theme-icon"></i>
         </button>
-        <button className="btn shopping-cart" type="button" title="Theme Change">
+        <button className="btn shopping-cart" type="button" title="Cart" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
           <i className="fa-solid fa-cart-shopping fa-lg" id="cart"></i>
+          {cartCount === 0 ? null : 
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+            <span id="cartCount">{cartCount}</span>
+            <span className="visually-hidden">number of items in cart</span>
+          </span>
+          }
         </button>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -55,7 +66,7 @@ export default function Navbar() {
                   Logout
                 </button>
               ) : (
-                <Link className="btn" to="/login">
+                <Link className="btn p-0" to="/login">
                   Login
                 </Link>
               )}

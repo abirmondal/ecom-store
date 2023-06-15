@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Alertmessage from "./Alertmessage";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../AuthContext";
+import AuthContext from "../contexts/AuthContext";
 
 export default function Loginbox() {
   const navigate = useNavigate();
