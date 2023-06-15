@@ -8,8 +8,8 @@ export default function Loginbox() {
   const { login, token } = useContext(AuthContext);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [username, setUsername] = useState("johnd");
-  const [password, setPassword] = useState("m38rmF$");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const alertType = "danger";
 
   function takeInput(e) {
