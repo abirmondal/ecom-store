@@ -46,9 +46,9 @@ export function getCartItemsCountWithQuantity() {
   return cartItems.reduce((acc, item) => acc + item.quantity, 0);
 }
 
-export function getCartItemIDCount(itemID) {
+export function getCartItemIDCount(itemId) {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const cartItemForID = cartItems.find((cartItem) => cartItem.id === itemID);
+  const cartItemForID = cartItems.find((cartItem) => cartItem.id === itemId);
   return cartItemForID ? cartItemForID.quantity : 0;
 }
 
