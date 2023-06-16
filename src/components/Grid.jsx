@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import CardForCatelog from "./CardForCatelog";
 
 export default function Grid({ category }) {
   var URL = "https://fakestoreapi.com/products/";
@@ -38,7 +38,7 @@ export default function Grid({ category }) {
     <div className="d-flex justify-content-center">
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {products.map((product) => (
-          <Card key={product.id} product={product} />
+          <CardForCatelog key={product.id} product={product} />
         ))}
       </div>
     </div>

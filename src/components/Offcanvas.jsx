@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import CardCart from "./CardCart";
+import CardForCart from "./CardForCart";
 import CartContext from "../contexts/CartContext";
 
 export default function Offcanvas() {
   const { cartItems } = useContext(CartContext);
+  const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   return (
     <div className="offcanvas offcanvas-end" tabIndex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
       <div className="offcanvas-header">
@@ -16,7 +17,14 @@ export default function Offcanvas() {
         {cartItems.length === 0 ? (
           <p className="text-center">Your cart is empty.</p>
         ) : (
-          cartItems.map((item) => <CardCart key={item.id} id={item.id} title={item.title} image={item.image} price={item.price} quantity={item.quantity} />)
+          <div>
+            <p className="text-center fs-5 fw-medium">
+              Total Amount: <span className="price-text">{totalAmount}</span>
+            </p>
+            {cartItems.map((item) => (
+              <CardForCart key={item.id} id={item.id} title={item.title} image={item.image} price={item.price} quantity={item.quantity} />
+            ))}
+          </div>
         )}
       </div>
     </div>

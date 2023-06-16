@@ -83,7 +83,7 @@ export default function Loginbox() {
   return (
     <div className="row align-items-center" style={{ minHeight: "85vh" }}>
       <div className="col-lg-5 col-md-8 mx-auto">
-        <div className="card card-body py-5 px-4">
+        <div className="CardForCatelog card-body py-5 px-4">
           <form>
             <h1 className="text-center pb-4">Login</h1>
             {showAlert && <Alertmessage type={alertType} message={alertMessage} closeButton="false" />}

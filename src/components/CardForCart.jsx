@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { addToCart, removeFromCart, getCartItemsCount, getCartItems } from "../actions/cartActions";
 import CartContext from "../contexts/CartContext";
 
-export default function CardCart(props) {
+export default function CardForCart(props) {
   const { setCartCount, setCartItems } = useContext(CartContext);
   const { id, title, image, price, quantity } = props;
 
@@ -22,7 +22,7 @@ export default function CardCart(props) {
   }
 
   return (
-    <div className="card" id={"cartCard" + id}>
+    <div className="card mb-2" id={"cartCard" + id}>
       <img src={image} className="card-img-top" alt="..." />
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
