@@ -9,8 +9,8 @@ export function CartProvider({ children }) {
   const [cartCount, setCartCount] = useState(getCartItemsCount());
 
   function addToCartContext(prodDetails) {
-    setCartCount(cartCount + 1);
     addToCart(prodDetails);
+    setCartCount(getCartItemsCount());
   }
 
   function getCartItemsContext() {
