@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import CartContext from "../contexts/CartContext";
-import "../actions/themeToggle.js"
-import ecomstoreimg from "../images/ecom-store-logo.png"
-
+import "../actions/themeToggle.js";
+import ecomstoreimg from "../images/ecom-store-logo.png";
 
 export default function Navbar() {
   const { token, logout } = useContext(AuthContext);
@@ -22,12 +21,12 @@ export default function Navbar() {
         </button>
         <button className="btn shopping-cart" type="button" title="Cart" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
           <i className="fa-solid fa-cart-shopping fa-lg" id="cart"></i>
-          {cartCount === 0 ? null : 
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-            <span id="cartCount">{cartCount}</span>
-            <span className="visually-hidden">number of items in cart</span>
-          </span>
-          }
+          {cartCount === 0 ? null : (
+            <span className="position-absolute start-75 translate-middle badge rounded-pill bg-primary" style={{ top: "15%" }}>
+              <span id="cartCount">{cartCount}</span>
+              <span className="visually-hidden">number of items in cart</span>
+            </span>
+          )}
         </button>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
