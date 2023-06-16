@@ -1,21 +1,24 @@
-import React, { useContext, useState } from "react";
-import { addToCart, removeFromCart, getCartItemsCount, getCartItemIDCount } from "../actions/cartActions";
+import React, { useContext } from "react";
+import { addToCart, removeFromCart, getCartItemsCount, getCartItems } from "../actions/cartActions";
 import CartContext from "../contexts/CartContext";
 
 export default function CardCart(props) {
-  const { setCartCount } = useContext(CartContext);
-  const { id, title, image, price } = props;
-  const [quantity, setQuantity] = useState(getCartItemIDCount(id));
+  const { setCartCount, setCartItems } = useContext(CartContext);
+  const { id, title, image, price, quantity } = props;
+
+  function updateCartValues() {
+    setCartItems(getCartItems());
+    setCartCount(getCartItemsCount());
+  }
 
   function handleAddToCart() {
     addToCart(props);
-    setQuantity(getCartItemIDCount(id));
+    updateCartValues();
   }
 
   function handleRemoveFromCart() {
     removeFromCart(id);
-    setCartCount(getCartItemsCount());
-    setQuantity(getCartItemIDCount(id));
+    updateCartValues();
   }
 
   return (
@@ -37,11 +40,3 @@ export default function CardCart(props) {
     </div>
   );
 }
-
-CardCart.defaultProps = {
-  title: "Product Name",
-  image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-  price: 10.99,
-  quantity: 1,
-  id: 1,
-};

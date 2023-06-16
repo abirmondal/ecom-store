@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { addToCart, getCartItemsCount, getCartItems } from "../actions/cartActions";
 import CartContext from "../contexts/CartContext";
 
 export default function Card({ product }) {
-  const { addToCartContext } = useContext(CartContext);
+  const { setCartCount, setCartItems } = useContext(CartContext);
   const rateCeil = Math.round(product.rating.rate);
   const commaPrice = product.price.toLocaleString("en-US");
   const prodDetailsForCart = product;
   prodDetailsForCart.quantity = 1;
 
   function handleAddToCart() {
-    addToCartContext(prodDetailsForCart);
+    addToCart(prodDetailsForCart);
+    setCartCount(getCartItemsCount());
+    setCartItems(getCartItems());
   }
 
   return (

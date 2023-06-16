@@ -3,8 +3,7 @@ import CardCart from "./CardCart";
 import CartContext from "../contexts/CartContext";
 
 export default function Offcanvas() {
-  const { getCartItemsContext } = useContext(CartContext);
-  const cartItems = getCartItemsContext();
+  const { cartItems } = useContext(CartContext);
   return (
     <div className="offcanvas offcanvas-end" tabIndex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
       <div className="offcanvas-header">
