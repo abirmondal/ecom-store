@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { addToCart, getCartItemsCount, getCartItems } from "../actions/cartActions";
+import { addToCart, removeFromCart, getCartItemsCount, getCartItems, getCartItemIDCount } from "../actions/cartActions";
 import CartContext from "../contexts/CartContext";
 
 export default function Card({ product }) {
@@ -9,11 +9,22 @@ export default function Card({ product }) {
   const commaPrice = product.price.toLocaleString("en-US");
   const prodDetailsForCart = product;
   prodDetailsForCart.quantity = 1;
+  const [quantity, setQuantity] = useState(getCartItemIDCount(prodDetailsForCart.id));
+
+  function updateCartValues() {
+    setQuantity(getCartItemIDCount(prodDetailsForCart.id));
+    setCartItems(getCartItems());
+    setCartCount(getCartItemsCount());
+  }
 
   function handleAddToCart() {
     addToCart(prodDetailsForCart);
-    setCartCount(getCartItemsCount());
-    setCartItems(getCartItems());
+    updateCartValues();
+  }
+
+  function handleRemoveFromCart() {
+    removeFromCart(prodDetailsForCart.id);
+    updateCartValues();
   }
 
   return (
@@ -35,9 +46,23 @@ export default function Card({ product }) {
             {product.rating.count}
           </div>
           <p className="card-text price-text">{commaPrice}</p>
-          <button className="btn btn-primary btn-sm" type="button" onClick={handleAddToCart}>
-            Add to Cart
-          </button>
+          {quantity === 0 ? (
+            <div className="input-group input-group-sm w-50">
+              <button className="btn btn-primary btn-sm" type="button" onClick={handleAddToCart}>
+                Add to Cart
+              </button>
+            </div>
+          ) : (
+            <div className="input-group input-group-sm w-50">
+              <button className="btn btn-secondary btn-sm" onClick={handleRemoveFromCart}>
+                -
+              </button>
+              <input type="text" className="form-control quantityCount" aria-label="Quantity of product" value={quantity} disabled />
+              <button className="btn btn-primary btn-sm" onClick={handleAddToCart}>
+                +
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
