@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
 import CartContext from "../contexts/CartContext";
 import "../actions/themeToggle.js"
+import ecomstoreimg from "../images/ecom-store-logo.png"
 
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md bg-body-tertiary fixed-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src="android-chrome-192x192.png" alt="Ecom Store Logo" style={{ width: "35px" }} />
+          <img src={ecomstoreimg} alt="Ecom Store Logo" style={{ width: "35px" }} />
           &nbsp;&nbsp; Ecom Store
         </Link>
         <button className="btn theme-toggler" type="button" title="Theme Change">

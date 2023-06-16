@@ -41,15 +41,15 @@ export function getCartItemsCount() {
   return cartItems ? cartItems.length : 0;
 }
 
-export function getCartItemsCountWithQuantity() {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  return cartItems.reduce((acc, item) => acc + item.quantity, 0);
-}
-
 export function getCartItemIDCount(itemId) {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   const cartItemForID = cartItems.find((cartItem) => cartItem.id === itemId);
   return cartItemForID ? cartItemForID.quantity : 0;
+}
+
+export function getCartItemsCountWithQuantity() {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  return cartItems.reduce((acc, item) => acc + item.quantity, 0);
 }
 
 export function getCartTotal() {

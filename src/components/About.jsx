@@ -1,4 +1,5 @@
 import React from "react";
+import myimg from "../images/my-image.png"
 
 export default function About() {
   return (
@@ -7,7 +8,7 @@ export default function About() {
       <hr />
       <div className="row">
         <div className="col-md-5">
-          <img className="mx-auto d-block" src="my-image.png" alt="Abir's Thumbnail" style={{ maxHeight: "60vh" }} />
+          <img className="mx-auto d-block" src={myimg} alt="Abir's Thumbnail" style={{ maxHeight: "60vh" }} />
           <h2 className="fs-4 text-center pt-2">Abir Mondal</h2>
         </div>
         <div className="col-md-7 align-self-center">
